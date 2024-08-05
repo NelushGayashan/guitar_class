@@ -1,3 +1,4 @@
+// slotRoutes.js
 import { Router } from 'express';
 import slotController from '../controllers/slotController.js'; // Import the default export
 

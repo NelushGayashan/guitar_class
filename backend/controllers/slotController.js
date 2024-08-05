@@ -1,10 +1,15 @@
-// slotController.js
+// controllers/slotController.js
 import Slot from '../models/Slot.js';
 
 // Get all slots
 const getSlots = async (req, res) => {
   try {
-    const slots = await Slot.find(); // Use Slot.find() to get all slots
+    const { day, time } = req.query; // Retrieve day and time from query parameters
+    const query = {};
+    if (day) query.day = day;
+    if (time) query.time = time;
+
+    const slots = await Slot.find(query);
     res.json(slots);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -13,10 +18,10 @@ const getSlots = async (req, res) => {
 
 // Create a new slot
 const createSlot = async (req, res) => {
-  const { date, time } = req.body;
+  const { day, time } = req.body;
 
   try {
-    const newSlot = new Slot({ date, time });
+    const newSlot = new Slot({ day, time });
     const savedSlot = await newSlot.save();
     res.status(201).json(savedSlot);
   } catch (error) {
@@ -30,7 +35,7 @@ const bookSlot = async (req, res) => {
   const { studentName } = req.body;
 
   try {
-    const slot = await Slot.findById(id); // Use Slot.findById() to find a slot by ID
+    const slot = await Slot.findById(id);
 
     if (!slot) {
       return res.status(404).json({ message: 'Slot not found' });

@@ -1,3 +1,4 @@
+// server.js
 import express, { json } from 'express';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js'; // Ensure file extension is included
