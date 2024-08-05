@@ -1,8 +1,7 @@
-// slotRoutes.js
 import { Router } from 'express';
-import slotController from '../controllers/slotController.js'; // Import the default export
+import slotController from '../controllers/slotController.js';
 
-const { getSlots, createSlot, bookSlot } = slotController; // Destructure the functions from the default export
+const { getSlots, createSlot, bookSlot } = slotController;
 
 const router = Router();
 

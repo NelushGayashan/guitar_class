@@ -2,8 +2,8 @@
 import { Schema, model } from 'mongoose';
 
 const slotSchema = new Schema({
-  day: { type: String, required: true }, // e.g., "Monday", "Tuesday", etc.
-  time: { type: String, required: true }, // e.g., "5pm-6pm", "6pm-7pm"
+  date: { type: Date, required: true },
+  time: { type: String, required: true },
   isBooked: { type: Boolean, default: false },
   studentName: { type: String },
 });

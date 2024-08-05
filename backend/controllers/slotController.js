@@ -1,15 +1,9 @@
-// controllers/slotController.js
 import Slot from '../models/Slot.js';
 
 // Get all slots
 const getSlots = async (req, res) => {
   try {
-    const { day, time } = req.query; // Retrieve day and time from query parameters
-    const query = {};
-    if (day) query.day = day;
-    if (time) query.time = time;
-
-    const slots = await Slot.find(query);
+    const slots = await Slot.find();
     res.json(slots);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -18,10 +12,10 @@ const getSlots = async (req, res) => {
 
 // Create a new slot
 const createSlot = async (req, res) => {
-  const { day, time } = req.body;
+  const { date, time } = req.body;
 
   try {
-    const newSlot = new Slot({ day, time });
+    const newSlot = new Slot({ date, time });
     const savedSlot = await newSlot.save();
     res.status(201).json(savedSlot);
   } catch (error) {
