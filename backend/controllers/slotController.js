@@ -1,3 +1,4 @@
+// controllers/slotControllers.js
 import Slot from '../models/Slot.js';
 
 // Get all slots
